@@ -11,6 +11,14 @@ public class Main {
             String Mysql = "jdbc:mysql://localhost:3306/sisa";
 
             conexion = DriverManager.getConnection(Mysql, "root", "");
+
+            Statement statement = conexion.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM empleados");
+
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("nombre") + " ");
+            }
+
             System.out.println("Conexión exitosa a la base de datos");
 
         } catch (ClassNotFoundException e) {
